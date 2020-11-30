@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<head>
+	<title>LAB 1</title>
+</head>
+<body> 
+
+<table id="tab1">
+	<tbody>
+		<tr>
+			<th style="padding-left: 0;">Имя:</th>
+			<th>Фамилия:</th>
+			<th>Возраст:</th>
+			<th>Балл:</th>
+		</tr>
+	</tbody>
+</table>
+
+<script type="text/javascript">
+
+class Student
+    {
+		_Name = "Student";
+		_Surname = "Student";
+		_Age = 18;
+		_AvgGrade = 0;
+		setAge(value)
+		{
+			if (value < 16) throw new Error("Слишком маленький возраст");
+			if (value > 60) throw new Error ("Слишком большой возраст");
+			this._Age = value;
+		}
+		setAvgGrade(value)
+		{
+			if (value < 0.0) throw new Error("Вы ввели слишком маленькое значение");
+			if (value > 10.0) throw new Error ("Вы ввели слишком большое значение");
+			this._Age = value;
+		}
+        getName() {return this._Name;};
+        getSurname() {return this._Surname;};
+		getAge(){ return this._Age;};
+		getAvgGrade() {return this._AvgGrade;};
+		randAge(){ return (Math.floor(Math.random() * (24 - 17) + 17));};
+		constructor(Name, Surname, Age, AvgGrade)
+		{
+			this._Name = Name;
+			this._Surname = Surname;
+			this._Age = Age;
+			this._AvgGrade = AvgGrade;
+		}
+	}
+	let stud = new Student("Василий", "Завалов", 18, 9.0);
+	var students = [];
+	 students[0] = new Student("Василий", "Завалов",Math.floor(Math.random() * (24 - 17) + 17) ,  (Math.random() * (10.0 - 4.0) + 4.0).toFixed(2)) ;
+	 students[1] = new Student("Алёна", "Прекрасная", Math.floor(Math.random() * (24 - 17) + 17), (Math.random() * (10.0 - 4.0) + 4.0).toFixed(2));
+	 students[2] = new Student("Степан", "Камсомолец", Math.floor(Math.random() * (24 - 17) + 17), (Math.random() * (10.0 - 4.0) + 4.0).toFixed(2));
+	 students[3] = new Student("Святослав", "Светлый",Math.floor(Math.random() * (24 - 17) + 17), (Math.random() * (10.0 - 4.0) + 4.0).toFixed(2));
+	 students[4] = new Student("Анна", "Лапенко", Math.floor(Math.random() * (24 - 17) + 17), (Math.random() * (10.0 - 4.0) + 4.0).toFixed(2));
+	 students[5] = new Student("Максим", "Сержант", Math.floor(Math.random() * (24 - 17) + 17), (Math.random() * (10.0 - 4.0) + 4.0).toFixed(2));
+    createStudentsTable('tab1',students);
+    alert("Средний балл всех студентов: "+(countAvgGrade('tab1')).toFixed(2));
+
+function createStudentsTable(tableID,arr)
+{
+    /*if (document.getElementById('tab1'))
+    {
+    	let table = document.getElementById('tab1');
+    	let tableBody=document.getElementById('tab1').getElementsByTagName('TBODY')[0];
+    }*/
+    /*else {
+    	let table=document.createElement("table");
+	    let tableBody=document.createElement("tbody");
+    } */
+    let table = document.getElementById(tableID);
+    let tableBody=document.getElementById(tableID).getElementsByTagName('TBODY')[0];
+	 for(let i = 0; i < arr.length; i++)
+    {
+             let row=document.createElement("tr"); //Создаем строчку
+             let cell_1=document.createElement("td"); //Создаем ячейку
+                 cell_1.appendChild(document.createTextNode(arr[i]._Name)); //Заполняем ячейку
+                 row.appendChild(cell_1); //Добавляем ячейку в строку
+             let cell_2=document.createElement("td"); 
+                 cell_2.appendChild(document.createTextNode(arr[i]._Surname));
+                 row.appendChild(cell_2); 
+             let cell_3=document.createElement("td"); 
+                 cell_3.appendChild(document.createTextNode(arr[i]._Age)); 
+                 row.appendChild(cell_3); 
+             let cell_4=document.createElement("td"); 
+                 cell_4.appendChild(document.createTextNode(arr[i]._AvgGrade));
+                 row.appendChild(cell_4); 
+             tableBody.appendChild(row); //Добавляем строку в таблицу
+    }
+        table.appendChild(tableBody); // Добавляем body в table 
+        document.getElementsByTagName("body")[0].appendChild(table); //Добавляем таблицу на страницу
+}
+
+function countAvgGrade (tableID)
+{
+ 	let rez = 0;
+ 	let table=document.getElementById(tableID);
+ 	let tableBody=document.getElementById(tableID).getElementsByTagName('TBODY')[0];
+    if(!tableBody)
+    {
+        alert("Таблица не существует");
+        return;
+    }
+
+    for (let i = 1; i < tableBody.rows.length; i++)
+    {
+        rez += parseFloat(tableBody.rows[i].lastChild.innerHTML);
+    }
+    rez = rez/(tableBody.rows.length-1);
+    return rez;
+}
+
+</script>
+
+</body>
+
+</html>

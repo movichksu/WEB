@@ -1,0 +1,103 @@
+/*------------------ TABLE --------------------*/
+.table {
+    font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
+    font-size: 16px;
+    width: 60%;
+    text-align: center;
+    border-collapse: separate; 
+    border-spacing: 1px;
+  }
+  .header_td {
+    color: black;
+    padding: 10px 15px;
+    background: #32ABE9;
+    font-weight: bold;
+  }
+  .element {
+    color: black;
+    background: #9ADDFF;
+    /*padding: 5px 10px;*/
+  }
+  .body_row:last-child td {
+    border-bottom: none;
+  }
+  .element:last-child {
+    border-right: none;
+  }
+  .body_row:hover td {
+    text-decoration: underline;
+    background: #32ABE9;
+    transition-duration: 0.5s;
+  }
+/*---------------- FORM -------------------*/
+form{
+  margin-top: 20px;
+}
+input[type=text] {
+    padding: 10px;
+    box-shadow:0 0 10px 4px rgba(0,0,0,0.1);
+  }
+  .button1{
+    color:  #003A58;
+    padding: 15px 20px;
+    max-width:250px;
+    text-decoration:none;
+    text-align:center;
+    display: block;
+    background: #B9E7FF;
+    background-position: 100% 0;
+    background-size: 200% 100%;
+    transition: all .25s ease-in;
+    border: 1px solid  #003A58;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    
+}
+.button1:hover {
+  background-position: 0 0;
+  background: #32ABE9;
+  color:black;
+  cursor: pointer;
+}
+/*-------------- REMOVE BUTTON ---------------*/
+.remove {
+    width: 40px;
+    height: 40px;
+    border-radius: 40px;
+    position: relative;
+    z-index: 1;
+    margin: 20px auto;
+    cursor: pointer;
+  }
+  .remove:before {
+    content: '+';
+    color: #E74C3C;
+    position: absolute;
+    z-index: 2;
+    transform: rotate(45deg);
+    font-size: 50px;
+    line-height: 1;
+    top: -5px;
+    left: 1.7px;
+    transition: all 0.3s cubic-bezier(0.77, 0, 0.2, 0.85);
+  }
+  .remove:after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 100%;
+    background: #E74C3C;
+    z-index: 1;
+    transition: all 0.3s cubic-bezier(0.77, 0, 0.2, 0.85);
+    transform: scale(0.01);
+  }
+  .remove:hover:after {
+    transform: scale(1);
+  }
+  .remove:hover:before {
+    transform: scale(0.8) rotate(45deg);
+    color: #fff;
+  }

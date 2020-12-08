@@ -125,79 +125,93 @@ class Student
  }
 
 (function(){
-
-    var primalArr = primalStudents();
-    var students = [];
-    for (let i = 0; i < primalArr.length; i++) {
-        addRow(primalArr[i], students);
-    }
-
-    var average = averageMark();
-    addAverageMark(average);
-
-    var student1 = new Student();
-
-    var formShow = document.show;
-
-    var NameBox = formShow.Name1;
-        NameBox.addEventListener("change", (e) =>{
-            let value = e.target.value;
-            student1.setName(value);
-        })
-        NameBox.addEventListener("blur", (e) =>{
-            var text = NameBox.value.trim();
-            if(text==="")
-                NameBox.style.borderColor = "red";
-            else
-                NameBox.style.borderColor = "green";
-        });
-
-    var SurnameBox = formShow.Surname1;
-        SurnameBox.addEventListener("change", (e) =>{
-            let value = e.target.value;
-            student1.setSurname(value);
-        })
-        SurnameBox.addEventListener("blur", (e) =>{
-            var text = SurnameBox.value.trim();
-            if(text==="")
-                SurnameBox.style.borderColor = "red";
-            else
-                SurnameBox.style.borderColor = "green";
-        });
+//---------------- получение json файла с localhost ------------------------------
+    //var primalArr = [];
+    var studArr = [];
+    let xhr = new XMLHttpRequest();
+    xhr.open('GET', 'http://localhost:3000/api/array.json ');
+    xhr.responseType = 'json';
+    xhr.send();
+    xhr.onload = function() { //таблица пишется внутри онлоад, т.к. делается ассинхронный запрос.
+        
+        for (let i = 0; i < xhr.response.students.length; i++) {
+            let s = xhr.response.students[i];
+            studArr.push(new Student(s.name, s.surname, s.age, s.averageNote));
+            //console.log(studArr[i]);
+        }
+        var students = [];
+        for (let i = 0; i < studArr.length; i++) {
+            addRow(studArr[i], students);
+            console.log(studArr[i]);
+        }
     
-    var ageBox = formShow.age1;
-        ageBox.addEventListener("change", (e) =>{
-            let value = Number(e.target.value);
-            student1.setAge(value);
-        })
-        ageBox.addEventListener("blur", (e) =>{
-            var text = ageBox.value.trim();
-            if(text==="")
-                ageBox.style.borderColor = "red";
-            else
-                ageBox.style.borderColor = "green";
-        });
-
-    var markBox = formShow.mark1;
-        markBox.addEventListener("change", (e) =>{
-            let value = Number(e.target.value);
-            student1.setMark(value);
-        })
-        markBox.addEventListener("blur", (e) =>{
-            var text = markBox.value.trim();
-            if(text==="")
-                markBox.style.borderColor = "red";
-            else
-                markBox.style.borderColor = "green";
-        });
-
-
-    var printButton = formShow.print;
-    printButton.addEventListener("click", () =>{
-        addRow(student1, students);
-        var el = document.querySelector("h2.averageMark");
-        el.parentNode.removeChild(el);
-        average = averageMark();
+        var average = averageMark();
         addAverageMark(average);
-    });
+    
+        var student1 = new Student();
+    
+        var formShow = document.show;
+    
+        var NameBox = formShow.Name1;
+            NameBox.addEventListener("change", (e) =>{
+                let value = e.target.value;
+                student1.setName(value);
+            })
+            NameBox.addEventListener("blur", (e) =>{
+                var text = NameBox.value.trim();
+                if(text==="")
+                    NameBox.style.borderColor = "red";
+                else
+                    NameBox.style.borderColor = "green";
+            });
+    
+        var SurnameBox = formShow.Surname1;
+            SurnameBox.addEventListener("change", (e) =>{
+                let value = e.target.value;
+                student1.setSurname(value);
+            })
+            SurnameBox.addEventListener("blur", (e) =>{
+                var text = SurnameBox.value.trim();
+                if(text==="")
+                    SurnameBox.style.borderColor = "red";
+                else
+                    SurnameBox.style.borderColor = "green";
+            });
+        
+        var ageBox = formShow.age1;
+            ageBox.addEventListener("change", (e) =>{
+                let value = Number(e.target.value);
+                student1.setAge(value);
+            })
+            ageBox.addEventListener("blur", (e) =>{
+                var text = ageBox.value.trim();
+                if(text==="")
+                    ageBox.style.borderColor = "red";
+                else
+                    ageBox.style.borderColor = "green";
+            });
+    
+        var markBox = formShow.mark1;
+            markBox.addEventListener("change", (e) =>{
+                let value = Number(e.target.value);
+                student1.setMark(value);
+            })
+            markBox.addEventListener("blur", (e) =>{
+                var text = markBox.value.trim();
+                if(text==="")
+                    markBox.style.borderColor = "red";
+                else
+                    markBox.style.borderColor = "green";
+            });
+    
+    
+        var printButton = formShow.print;
+        printButton.addEventListener("click", () =>{
+            addRow(student1, students);
+            var el = document.querySelector("h2.averageMark");
+            el.parentNode.removeChild(el);
+            average = averageMark();
+            addAverageMark(average);
+        });
+    };
 }())

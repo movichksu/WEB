@@ -1,40 +1,40 @@
 {
     "students":[
         {
-            "name":"Vania",
-            "surname":"Prokopiev",
-            "age":18,
-            "averageNote":9.4
+            "_Name":"Иван",
+            "_Surname":"Иванов",
+            "_Age":19,
+            "_AvgGrade":9.4
         },
         {
-            "name":"Vania",
-            "surname":"Prokopiev",
-            "age":18,
-            "averageNote":7.4
+            "_Name":"Артур",
+            "_Surname":"Шариков",
+            "_Age":18,
+            "_AvgGrade":7.4
         },
         {
-            "name":"Vania",
-            "surname":"Prokopiev",
-            "age":18,
-            "averageNote":4.4
+            "_Name":"Василиса",
+            "_Surname":"Премудрая",
+            "_Age":18,
+            "_AvgGrade":10.0
         },
         {
-            "name":"Vania",
-            "surname":"Prokopiev",
-            "age":18,
-            "averageNote":5.4
+            "_Name":"Дарья",
+            "_Surname":"Соловьёва",
+            "_Age":18,
+            "_AvgGrade":4.4
         },
         {
-            "name":"Vania",
-            "surname":"Prokopiev",
-            "age":18,
-            "averageNote":8.4
+            "_Name":"Михаил",
+            "_Surname":"Иванько",
+            "_Age":18,
+            "_AvgGrade":8.4
         },
         {
-            "name":"Vania",
-            "surname":"Prokopiev",
-            "age":18,
-            "averageNote":9.6
+            "_Name":"Марина",
+            "_Surname":"Лаврова",
+            "_Age":18,
+            "_AvgGrade":9.6
         }
     ]
     }
